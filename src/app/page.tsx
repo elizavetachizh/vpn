@@ -1,3 +1,7 @@
 export default function Page() {
-    return <h1>Главная страница</h1>
+  return (
+    <div>
+      <h2>Добро пожаловать на одностраничный сайт</h2>
+    </div>
+  );
 }
