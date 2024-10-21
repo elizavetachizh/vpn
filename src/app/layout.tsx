@@ -24,7 +24,7 @@ export default function RootLayout({
         <body>
           {/* Рендер параллельных маршрутов */}
           {header}
-          <div>
+          <div id={"access-section"}>
             {access}
             {grid}
             {chooseName}

@@ -32,7 +32,8 @@ export const StyleOrangeText = styled.p`
   margin: 0.5rem auto;
 `;
 
-export const GeneralWrapper = styled.div`
+export const GeneralWrapper = styled.div<{ isModalWindow?: boolean }>`
+  overflow: ${({ isModalWindow }) => (isModalWindow ? "hidden" : "visible")};
   width: 76%;
   margin: 2rem auto;
   @media (max-width: 800px) {

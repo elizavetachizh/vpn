@@ -58,7 +58,7 @@ const Divider = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin: 8rem auto 0;
+  margin: 7rem auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,12 +67,15 @@ const Wrapper = styled.div`
   /* Адаптация под мобильные устройства */
   @media (max-width: 768px) {
     padding: 10px;
+    margin-top: 5rem;
   }
 `;
 
 const ImageStyle = styled(Image)`
-  max-width: 100%;
-  height: auto;
+  //max-width: 100%;
+  //height: auto;
+  width: 100%;
+  background-size: cover;
 `;
 
 export default function AccessComponent() {
@@ -83,7 +86,7 @@ export default function AccessComponent() {
     }
   };
   return (
-    <GeneralWrapper id={"access-section"}>
+    <GeneralWrapper >
       <Wrapper>
         <StyledText>
           Access <span className="highlight-blue">everything</span>
@@ -93,37 +96,35 @@ export default function AccessComponent() {
           VPN
         </StyledText>
         <ImageStyle
-          src={require("../../assets/man.png")}
+          src={require("../../assets/man.svg")}
           alt="Первое изображение"
         />
-        <ButtonGetVpn
-          style={{ width: "396px" }}
-          onClick={handleScrollToSection}
-        >
+        <ButtonGetVpn width={"396px"} onClick={handleScrollToSection}>
           Get VPN
         </ButtonGetVpn>
         <ImageStyle
           style={{ margin: "1rem auto" }}
-          src={require("../../assets/trusted.png")}
-          alt="Второе изображение"
+          src={require("../../assets/trusted.svg")}
+          alt="Trusted"
         />
         <Container>
           <Text>
-            <Image src={require("../../assets/Vector.png")} alt={"vector"} />
+            <Image src={require("../../assets/vector.svg")} alt={"vector"} />
             <div>
               <p>50+</p> <p className={"grey"}>Locations</p>
             </div>
           </Text>
           <Divider />
           <Text>
-            <Image src={require("../../assets/servers.png")} alt={"servers"} />
+            <Image src={require("../../assets/servers.svg")} alt={"servers"} />
             <div>
               <p>1000+</p> <p className={"grey"}>Servers</p>
             </div>
           </Text>
         </Container>
-        <p>
-          VPN-your ultimate solution for a private and secure online experience!
+        <p style={{ textAlign: "center", color: "#646464" }}>
+          VPN-your <span style={{ color: "#3177F2" }}>ultimate</span> solution
+          for a private and secure online experience!
         </p>
       </Wrapper>
     </GeneralWrapper>

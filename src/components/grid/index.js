@@ -1,7 +1,11 @@
 "use client";
 import styled from "styled-components";
-import { GeneralWrapper, StyleBlueText, StyleOrangeText } from "../../styles/generalStyles";
 import Image from "next/image";
+import {
+  GeneralWrapper,
+  StyleBlueText,
+  StyleOrangeText,
+} from "../../styles/generalStyles";
 
 const GridContainer = styled.div`
   display: grid;
@@ -59,7 +63,7 @@ export default function GridComponent() {
       <GridContainer>
         <GridItem>
           <Image
-            src={require("../../assets/unlimited.png")}
+            src={require("../../assets/unlimited.svg")}
             alt={"Unlimited"}
           />
           <StyleOrangeText>Unlimited</StyleOrangeText>
@@ -71,7 +75,7 @@ export default function GridComponent() {
           <DividerVertical className={"not-show"} />
         </GridItem>
         <GridItem>
-          <Image src={require("../../assets/flashing.png")} alt={"Flashing"} />
+          <Image src={require("../../assets/flashing.svg")} alt={"Flashing"} />
           <StyleOrangeText>Flashing</StyleOrangeText>
           <StyleBlueText>connecting speed</StyleBlueText>
           <Text>
@@ -86,7 +90,7 @@ export default function GridComponent() {
       </GridContainer>
       <GridContainer>
         <GridItem>
-          <Image src={require("../../assets/hide.png")} alt={"Hide"} />
+          <Image src={require("../../assets/hide.svg")} alt={"Hide"} />
           <StyleOrangeText>Hide</StyleOrangeText>
           <StyleBlueText>your location</StyleBlueText>
           <Text>
@@ -96,7 +100,7 @@ export default function GridComponent() {
           <DividerVertical className={"not-show"} />
         </GridItem>
         <GridItem>
-          <Image src={require("../../assets/bypass.png")} alt={"Bypass"} />
+          <Image src={require("../../assets/bypass.svg")} alt={"Bypass"} />
           <StyleOrangeText>Bypass</StyleOrangeText>
           <StyleBlueText>blocked sites</StyleBlueText>
           <Text>Access any website safely and anonymously!</Text>

@@ -2,8 +2,8 @@
 
 import styled from "styled-components";
 
-export const ButtonGetVpn = styled.button`
-  width: 100%;
+export const ButtonGetVpn = styled.button<{ width?: string }>`
+  width: ${({ width }) => (width ? width : "100%")};
   cursor: pointer;
   background: #ff5d17;
   border: 1px solid #ff5d17;
@@ -15,7 +15,10 @@ export const ButtonGetVpn = styled.button`
   text-align: center;
   color: #ffffff;
   margin: 0.5rem auto;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const StyleBlackText = styled.p`
@@ -45,7 +48,6 @@ const CheckboxContainer = styled.div`
 const HiddenCheckbox = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
-  clippath: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -56,26 +58,22 @@ const HiddenCheckbox = styled.input`
 `;
 
 // Стилизованный контейнер для чекбокса
-const StyledCheckboxLabel = styled.label<{ isChecked: boolean }>`
+const StyledCheckboxLabel = styled.label<{ checked: boolean }>`
   display: flex;
   align-items: center;
   cursor: pointer;
   font-size: 16px;
   padding: 0 1rem;
-  color: ${({ isChecked }) => (isChecked ? "#007BFF" : "#333")};
   transition: color 0.3s ease;
-
-  &:hover {
-    color: ${({ isChecked }) => (isChecked ? "#0056b3" : "#555")};
-  }
+  font-weight: bold;
 `;
 
 // Кастомный чекбокс
-const CustomCheckbox = styled.div<{ isChecked: boolean }>`
+const CustomCheckbox = styled.div<{ checked: boolean }>`
   width: 16px;
   height: 16px;
-  background-color: ${({ isChecked }) => (isChecked ? "#ff5d17" : "#fff")};
-  border: 2px solid ${({ isChecked }) => (isChecked ? "#ff5d17" : "#646464")};
+  background-color: ${({ checked }) => (checked ? "#ff5d17" : "#fff")};
+  border: 2px solid ${({ checked }) => (checked ? "#ff5d17" : "#646464")};
   border-radius: 10px;
   margin-right: 8px;
   transition: background-color 0.3s ease;
@@ -86,7 +84,7 @@ const CustomCheckbox = styled.div<{ isChecked: boolean }>`
   justify-content: center;
 
   &:after {
-    content: ${({ isChecked }) => (isChecked ? '"✓"' : '""')};
+    content: ${({ checked }) => (checked ? '"✓"' : '""')};
     color: #fff;
     font-size: 12px;
   }
@@ -98,7 +96,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { GeneralWrapper, StyleBlueText } from "@/src/styles/generalStyles";
 import Modal from "@/src/components/modal";
 import { StyledText } from "@/src/components/access";
-import Link from "next/link";
 
 type User = {
   name: {
@@ -128,6 +125,7 @@ const ChooseNameComponent = () => {
   }, []);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target)
     setUserName(e.target.value);
   }, []);
 
@@ -137,13 +135,14 @@ const ChooseNameComponent = () => {
 
   return (
     <GeneralWrapper>
-      <Link href={"/modal"}>to modal</Link>
       <div id="target-section">
-        <StyleBlueText style={{ margin: "4rem auto" }}>
+        <StyleBlueText
+          style={{ margin: "4rem auto", textTransform: "inherit" }}
+        >
           Millions of people trust us!
         </StyleBlueText>
         <StyledText style={{ textAlign: "left" }}>
-          CHOOSE &nbsp;
+          CHOOSE&nbsp;
           <span className="highlight-blue">YOUR NAME</span>
         </StyledText>
 
@@ -158,15 +157,17 @@ const ChooseNameComponent = () => {
             />
             <StyledCheckboxLabel
               htmlFor={`user-${index}`}
-              isChecked={userName === user.name.first}
+              checked={userName === user.name.first}
             >
-              <CustomCheckbox isChecked={userName === user.name.first} />
+              <CustomCheckbox checked={userName === user.name.first} />
               {user.name.first} {user.name.last}
             </StyledCheckboxLabel>
           </CheckboxContainer>
         ))}
 
-        <ButtonGetVpn onClick={handleClick}>Get VPN</ButtonGetVpn>
+        <ButtonGetVpn disabled={!userName} onClick={handleClick}>
+          Get VPN
+        </ButtonGetVpn>
 
         {isModalWindow && (
           <Modal userName={userName} setIsModalWindow={setIsModalWindow} />

@@ -51,6 +51,7 @@ const Union = styled.div`
   align-items: center;
   padding: 0;
   margin-left: 16px;
+  cursor: pointer;
 `;
 
 export default function HeaderComponent() {
@@ -68,9 +69,8 @@ export default function HeaderComponent() {
   };
   return (
     <HeaderStyle>
-      <Union>
+      <Union   onClick={handleScrollUp}>
         <Image
-          onClick={handleScrollUp}
           src={require("../../assets/logo.svg")}
           alt="logo"
         />
