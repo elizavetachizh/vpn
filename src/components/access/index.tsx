@@ -9,28 +9,31 @@ export const StyledText = styled.p`
   margin: 0;
   color: black;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 32px;
   text-align: center;
   .highlight-blue {
     color: #007bff; /* Цвет голубой */
   }
 `;
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0 1fr 1fr;
+  //display: flex;
   align-items: center; /* Вертикальное центрирование элементов */
-  justify-content: space-evenly; /* Центрирование элементов по горизонтали */
+  //justify-content: space-evenly; /* Центрирование элементов по горизонтали */
   font-size: 24px;
   font-weight: bold;
   box-shadow: 0 2px 11px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   width: 100%;
   margin: 1rem auto;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
 `;
 
 const Text = styled.span`
   display: flex;
   align-items: center;
+  padding: 0.5rem 0;
   margin: 0 10px; /* Расстояние между текстом и черточкой */
   p {
     margin: 0 auto;
@@ -47,7 +50,7 @@ const Text = styled.span`
     color: #646464;
   }
   img {
-    margin: 0 5px;
+    margin: 0 10px;
   }
 `;
 
@@ -108,6 +111,7 @@ export default function AccessComponent() {
           alt="Trusted"
         />
         <Container>
+          <div/>
           <Text>
             <Image src={require("../../assets/vector.svg")} alt={"vector"} />
             <div>
@@ -115,12 +119,13 @@ export default function AccessComponent() {
             </div>
           </Text>
           <Divider />
-          <Text>
+          <Text style={{justifyContent:"flex-end"}}>
             <Image src={require("../../assets/servers.svg")} alt={"servers"} />
             <div>
               <p>1000+</p> <p className={"grey"}>Servers</p>
             </div>
           </Text>
+          <div/>
         </Container>
         <p style={{ textAlign: "center", color: "#646464" }}>
           VPN-your <span style={{ color: "#3177F2" }}>ultimate</span> solution

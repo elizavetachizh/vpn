@@ -125,7 +125,7 @@ const ChooseNameComponent = () => {
   }, []);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target)
+    console.log(e.target);
     setUserName(e.target.value);
   }, []);
 
@@ -137,11 +137,15 @@ const ChooseNameComponent = () => {
     <GeneralWrapper>
       <div id="target-section">
         <StyleBlueText
-          style={{ margin: "4rem auto", textTransform: "inherit" }}
+          style={{
+            fontSize: "24px",
+            margin: "4rem auto",
+            textTransform: "inherit",
+          }}
         >
           Millions of people trust us!
         </StyleBlueText>
-        <StyledText style={{ textAlign: "left" }}>
+        <StyledText style={{ fontSize: "24px", textAlign: "left" }}>
           CHOOSE&nbsp;
           <span className="highlight-blue">YOUR NAME</span>
         </StyledText>
